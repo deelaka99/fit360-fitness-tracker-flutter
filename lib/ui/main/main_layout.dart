@@ -13,14 +13,24 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> {
   int _currentIndex = 0;
 
-  final _screens = const [HomeScreen(), MapTrackerScreen(), ProfileScreen()];
+  Widget _currentScreen() {
+    switch (_currentIndex) {
+      case 1:
+        return const MapTrackerScreen();
+      case 2:
+        return const ProfileScreen();
+      case 0:
+      default:
+        return const HomeScreen();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Scaffold(
-      body: IndexedStack(index: _currentIndex, children: _screens),
+      body: _currentScreen(),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
         onDestinationSelected: (index) {

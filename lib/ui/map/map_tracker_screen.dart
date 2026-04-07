@@ -69,6 +69,7 @@ class _MapTrackerScreenState extends State<MapTrackerScreen> {
                     ),
                   ),
                   FloatingActionButton.small(
+                    heroTag: 'map_my_location_fab',
                     onPressed: () {
                       _mapController?.animateCamera(
                         CameraUpdate.newLatLngZoom(_center, 15),
@@ -85,6 +86,7 @@ class _MapTrackerScreenState extends State<MapTrackerScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'map_tracking_fab',
         onPressed: () {
           setState(() {
             _isTracking = !_isTracking;
